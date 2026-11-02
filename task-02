@@ -1,0 +1,188 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>My Personal Website</title>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #f2f5fa;
+            scroll-behavior: smooth;
+        }
+
+        header {
+            background: #172554;
+            color: white;
+            text-align: center;
+            padding: 25px;
+        }
+
+        nav {
+            background: #2563eb;
+            padding: 15px;
+            text-align: center;
+            position: sticky;
+            top: 0;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 12px;
+            font-weight: bold;
+        }
+
+        nav a:hover {
+            color: yellow;
+        }
+
+        section {
+            background: white;
+            margin: 20px;
+            padding: 25px;
+            border-radius: 10px;
+            animation: fade 1s;
+        }
+
+        h2 {
+            color: #2563eb;
+        }
+
+        button {
+            background: #2563eb;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #172554;
+        }
+
+        footer {
+            background: #172554;
+            color: white;
+            text-align: center;
+            padding: 15px;
+        }
+
+        @keyframes fade {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (max-width: 600px) {
+            nav a {
+                display: inline-block;
+                margin: 8px;
+            }
+
+            section {
+                margin: 10px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <h1>My Personal Portfolio</h1>
+    <p>Welcome to My Website</p>
+</header>
+
+<nav>
+    <a href="#profile">Profile</a>
+    <a href="#education">Education</a>
+    <a href="#skills">Skills</a>
+    <a href="#hobbies">Hobbies</a>
+    <a href="#projects">Projects</a>
+    <a href="#contact">Contact</a>
+</nav>
+
+<section id="profile">
+    <h2>My Profile</h2>
+    <h3>Name: Your Name</h3>
+    <p>I am a student interested in technology
+    and learning new skills.</p>
+</section>
+
+<section id="education">
+    <h2>Educational Qualifications</h2>
+    <ul>
+        <li>10th Class</li>
+        <li>Intermediate</li>
+        <li>B.Tech - CSE (AIML)</li>
+    </ul>
+</section>
+
+<section id="skills">
+    <h2>Technical Skills</h2>
+    <ul>
+        <li>Python</li>
+        <li>HTML</li>
+        <li>CSS</li>
+        <li>Java</li>
+    </ul>
+</section>
+
+<section id="hobbies">
+    <h2>My Hobbies</h2>
+    <ul>
+        <li>Reading Books</li>
+        <li>Listening to Music</li>
+        <li>Drawing</li>
+        <li>Playing Games</li>
+    </ul>
+</section>
+
+<section id="projects">
+    <h2>My Projects</h2>
+    <ul>
+        <li>Personal Portfolio Website</li>
+        <li>Student Management System</li>
+        <li>AI and ML Mini Project</li>
+    </ul>
+</section>
+
+<section id="achievements">
+    <h2>Achievements</h2>
+    <ul>
+        <li>Participated in Technical Events</li>
+        <li>Completed Python Course</li>
+        <li>Participated in Workshops</li>
+    </ul>
+</section>
+
+<section id="resume">
+    <h2>My Resume</h2>
+    <p>Click below to view or download my resume.</p>
+    <a href="resume.pdf" download>
+        <button>Download Resume</button>
+    </a>
+</section>
+
+<section id="contact">
+    <h2>Contact Information</h2>
+    <p>Email: yourmail@gmail.com</p>
+    <p>Phone: 9876543210</p>
+    <p>Location: Andhra Pradesh</p>
+</section>
+
+<footer>
+    <p>© 2026 My Personal Portfolio</p>
+    <p>Thank You for Visiting!</p>
+</footer>
+
+</body>
+</html>
