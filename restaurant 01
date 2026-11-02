@@ -1,0 +1,340 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<title>ShopEasy - Online Shopping</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #f5f5f5;
+}
+
+/* Navigation */
+header {
+    background: #172b4d;
+    color: white;
+    padding: 20px;
+    text-align: center;
+}
+
+nav {
+    background: #263f68;
+    padding: 15px;
+    text-align: center;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    margin: 15px;
+    font-size: 16px;
+}
+
+nav a:hover {
+    color: yellow;
+}
+
+/* Search */
+.search {
+    padding: 15px;
+    text-align: center;
+}
+
+.search input {
+    width: 70%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+/* Banner */
+.banner {
+    background: linear-gradient(120deg, #ff7e5f, #feb47b);
+    color: white;
+    text-align: center;
+    padding: 55px 20px;
+}
+
+.banner h2 {
+    font-size: 35px;
+}
+
+.banner button {
+    padding: 12px 25px;
+    margin-top: 15px;
+    background: #172b4d;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+/* Categories */
+.categories {
+    text-align: center;
+    padding: 30px;
+}
+
+.categories button {
+    padding: 12px 20px;
+    margin: 8px;
+    background: #263f68;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+/* Products */
+.products {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    padding: 25px;
+}
+
+.card {
+    background: white;
+    padding: 15px;
+    text-align: center;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px #ccc;
+}
+
+.card img {
+    width: 100%;
+    height: 180px;
+    object-fit: contain;
+}
+
+.card h3 {
+    margin: 12px;
+}
+
+.price {
+    color: green;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.old-price {
+    color: gray;
+    text-decoration: line-through;
+}
+
+.discount {
+    color: red;
+    font-weight: bold;
+}
+
+.rating {
+    color: orange;
+    margin: 10px;
+}
+
+.card button {
+    background: #ff6600;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    margin-top: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.card button:hover {
+    background: #cc5200;
+}
+
+/* Footer */
+footer {
+    background: #172b4d;
+    color: white;
+    text-align: center;
+    padding: 25px;
+}
+
+/* Responsive */
+@media(max-width:900px) {
+    .products {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media(max-width:500px) {
+    .products {
+        grid-template-columns: 1fr;
+    }
+
+    nav a {
+        display: inline-block;
+        margin: 8px;
+    }
+
+    .banner h2 {
+        font-size: 25px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <h1>🛍 ShopEasy</h1>
+    <p>Your Online Shopping Destination</p>
+</header>
+
+<nav>
+    <a href="#home">Home</a>
+    <a href="#categories">Categories</a>
+    <a href="#products">Products</a>
+    <a href="#offers">Offers</a>
+    <a href="#contact">Contact</a>
+    <a href="#cart">🛒 Cart (<span id="cartCount">0</span>)</a>
+</nav>
+
+<div class="search">
+    <input type="text" id="searchInput"
+    placeholder="Search for products..."
+    oninput="searchProducts()">
+</div>
+
+<!-- Promotional Banner -->
+<section class="banner" id="home">
+    <h2>Big Shopping Festival!</h2>
+    <p>Get up to 50% OFF on your favourite products.</p>
+    <button onclick="document.getElementById('products').scrollIntoView()">
+        Shop Now
+    </button>
+</section>
+
+<!-- Categories -->
+<section class="categories" id="categories">
+    <h2>Shop By Categories</h2>
+    <br>
+    <button onclick="filterProducts('All')">All</button>
+    <button onclick="filterProducts('Electronics')">Electronics</button>
+    <button onclick="filterProducts('Fashion')">Fashion</button>
+    <button onclick="filterProducts('Accessories')">Accessories</button>
+</section>
+
+<!-- Product List -->
+<section id="products">
+    <h2 style="text-align:center; color:#172b4d;">
+        Featured Products
+    </h2>
+
+    <div class="products">
+
+        <div class="card" data-category="Electronics">
+            <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e">
+            <h3>Wireless Headphones</h3>
+            <p>High-quality sound and comfortable design.</p>
+            <p class="rating">⭐⭐⭐⭐⭐ (4.8)</p>
+            <p class="price">₹1,499</p>
+            <p class="old-price">₹2,999</p>
+            <p class="discount">50% OFF</p>
+            <button onclick="addCart()">Add to Cart</button>
+        </div>
+
+        <div class="card" data-category="Electronics">
+            <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30">
+            <h3>Smart Watch</h3>
+            <p>Track your fitness and daily activities.</p>
+            <p class="rating">⭐⭐⭐⭐ (4.5)</p>
+            <p class="price">₹2,499</p>
+            <p class="old-price">₹3,999</p>
+            <p class="discount">38% OFF</p>
+            <button onclick="addCart()">Add to Cart</button>
+        </div>
+
+        <div class="card" data-category="Fashion">
+            <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff">
+            <h3>Sports Shoes</h3>
+            <p>Stylish and comfortable running shoes.</p>
+            <p class="rating">⭐⭐⭐⭐⭐ (4.7)</p>
+            <p class="price">₹1,899</p>
+            <p class="old-price">₹2,999</p>
+            <p class="discount">37% OFF</p>
+            <button onclick="addCart()">Add to Cart</button>
+        </div>
+
+        <div class="card" data-category="Accessories">
+            <img src="https://images.unsplash.com/photo-1526170375885-4d8ecf77b99f">
+            <h3>Digital Camera</h3>
+            <p>Capture beautiful moments with clarity.</p>
+            <p class="rating">⭐⭐⭐⭐ (4.6)</p>
+            <p class="price">₹5,999</p>
+            <p class="old-price">₹7,999</p>
+            <p class="discount">25% OFF</p>
+            <button onclick="addCart()">Add to Cart</button>
+        </div>
+
+    </div>
+</section>
+
+<!-- Special Offers -->
+<section class="banner" id="offers">
+    <h2>Special Weekend Offers!</h2>
+    <p>Extra discounts on selected products.</p>
+</section>
+
+<!-- Contact -->
+<section id="contact" style="text-align:center; padding:30px;">
+    <h2>Contact Us</h2>
+    <p>Email: support@shopeasy.com</p>
+    <p>Phone: 9876543210</p>
+</section>
+
+<footer>
+    <p>© 2026 ShopEasy. All Rights Reserved.</p>
+    <p>Happy Shopping! ❤️</p>
+</footer>
+
+<script>
+let cart = 0;
+
+function addCart() {
+    cart++;
+    document.getElementById("cartCount").innerText = cart;
+    alert("Product added to cart successfully!");
+}
+
+function filterProducts(category) {
+    let cards = document.querySelectorAll(".card");
+
+    cards.forEach(card => {
+        if (category === "All" ||
+            card.dataset.category === category) {
+            card.style.display = "block";
+        } else {
+            card.style.display = "none";
+        }
+    });
+}
+
+function searchProducts() {
+    let search = document.getElementById("searchInput")
+        .value.toLowerCase();
+
+    let cards = document.querySelectorAll(".card");
+
+    cards.forEach(card => {
+        let name = card.querySelector("h3").innerText.toLowerCase();
+
+        card.style.display = name.includes(search)
+            ? "block" : "none";
+    });
+}
+</script>
+
+</body>
+</html>
